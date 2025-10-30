@@ -38,6 +38,9 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -138,8 +141,8 @@
     // 残り秒数アナログ表示
     function analog(rest){
         var h = parseInt(rest/3600);
-        var m = parseInt((rest-h*3600)/60);
-        var s = parseInt(rest-h*3600-m*60);
+        var m = parseInt(rest/60);
+        var s = parseInt(rest-m*60);
         clock(h,m,s,true);
 
     }
@@ -165,6 +168,8 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
+
         
     }
 
@@ -204,9 +209,15 @@
         alarm();
         active = false;
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
-        $("#time").html("経過時間： 0");　
-        $("#remain").html("残り時間： " + period);
+        $("#time").html("経過時間： 0 秒");　
+        $("#remain").html("残り時間： " + period + "秒");
+        $("body").css("background-color", "skyblue");
 
+        
+    }
+
+    function btnDClick(e){
+        
         
     }
     
@@ -216,19 +227,29 @@
         if (active) {
             etime = parseInt( (new Date() - startTime)/1000 );
             rest = period - etime;　
-            $("#time").html("経過時間： " + etime);
-            $("#remain").html("残り時間： " + rest);
+            $("#time").html("経過時間： " + etime+ "秒");
+            $("#remain").html("残り時間： " + rest + "秒");
             analog(rest);
             if(rest<=0){
                 active=false;
                 alarm();
             }
-
+            if(rest>30 && rest<=45)
+            {
+                 $("body").css("background-color", "pink");
+            }else if(rest>15 && rest<=30){
+                 $("body").css("background-color", "green");
+            }else if(rest<=15){
+               $("body").css("background-color", "blue");
+            }
+           
         }
+
 
         
         
     } 
+   
 
   </script>
 </head>
@@ -242,7 +263,8 @@
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnC">Set</button>
+    <button id="btnD">Rstart</button>
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
