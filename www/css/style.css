@@ -57,22 +57,22 @@
     
     #btnA {
         font-size: 20px;
-        position:absolute; top:380px; left:2%; width:43%; height:60px; 
+        position:absolute; top:380px; left:2%; width:33%; height:60px; 
         background-color: yellow;
         color: green;
     }
     
     #btnB {
         font-size: 20px;
-        position:absolute; top:380px; left:45%; width:25%; height:60px; 
+        position:absolute; top:380px; left:35%; width:33%; height:60px; 
     }
 
     #btnC {
-        font-size: 10px;
-        position:absolute; top:380px; left:70%; width:28%; height:60px; 
+        font-size: 20px;
+        position:absolute; top:380px; left:68%; width:31%; height:60px; 
     }
     #btnD {
-        font-size: 10px;
+        font-size: 20px;
         position:absolute; top:440px; left:70%; width:28%; height:60px; 
     }
     
